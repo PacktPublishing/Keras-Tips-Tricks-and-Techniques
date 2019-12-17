@@ -1,0 +1,43 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi there", "How are you", "Is anyone there?", "Hello", "Good day"],
+         "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
+         "context": [""]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Until next time"],
+         "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"],
+         "context": [""]
+        },
+        {"tag": "noanswer",
+         "patterns": [],
+         "responses": ["Sorry, I can't understand you", "Please give me more info", "Not sure I understand"],
+         "context": [""]
+        },
+        {"tag": "options",
+         "patterns": ["How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
+         "responses": ["I can help manage your library books. What do you want to do?"],
+         "context": [""]
+        },
+        {"tag": "book_search",
+         "patterns": ["Show me adventure books", "I am looking for some books", "Give me a list of books", "Show me new books" ],
+         "responses": ["Searching for books..."],
+         "context": [""]
+        },
+        {"tag": "return_book",
+         "patterns": ["I want to return a book", "returning a book", "book return", "Can I return a book" ],
+         "responses": ["Navigating to book return module"],
+         "context": [""]
+        },
+        {"tag": "renew_book",
+                "patterns": ["Can I renew a book", "Renew a book", "I would like to renew my books", "Renew all my books" ],
+                "responses": ["Navigating to renew book module"],
+                "context": [""]
+               }
+   ]
+}
