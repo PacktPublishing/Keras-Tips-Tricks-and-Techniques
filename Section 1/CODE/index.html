@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Inline CSS based on choices in "Settings" tab -->
+    <style>
+        .bootstrap-iso .formden_header h2,
+        .bootstrap-iso .formden_header p,
+        .bootstrap-iso form {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black
+        }
+
+        .bootstrap-iso form button,
+        .bootstrap-iso form button:hover {
+            color: white !important;
+        }
+
+        .asteriskField {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        My House Price Predictor
+    </h1>
+    <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+    <div class="bootstrap-iso">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <form action="http://127.0.0.1:5000/predict" method="post">
+                        <div class="form-group ">
+                            <label class="control-label " for="crim">
+                                Per Capita Crime Rate
+                            </label>
+                            <input class="form-control" id="crim" name="crim" type="text" />
+                        </div>
+                        <div class="form-group ">
+                            <label class="control-label requiredField" for="zn">
+                                Proportion of Land zoned
+                                <span class="asteriskField">
+                                    *
+                                </span>
+                            </label>
+                            <input class="form-control" id="zn" name="zn" type="text" />
+                        </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="indus">
+                                Non retail acres
+                            </label>
+                            <input class="form-control" id="indus" name="indus" type="text" />
+                        </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="nox">
+                                Nitric Oxide Concentration
+                            </label>
+                            <input class="form-control" id="nox" name="nox" type="text" />
+                        </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="rm">
+                                No. of rooms
+                            </label>
+                            <input class="form-control" id="rm" name="rm" type="text" />
+                        </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="age">
+                                Age
+                            </label>
+                            <input class="form-control" id="age" name="age" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <button class="btn btn-primary " name="submit" type="button" onclick="submitform()">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    //this is some basic javascript to send a request to the flask api when the button on the form is pressed
+    //note we have hard coded some of the house properties for simplicity.
+        function submitform() {
+            var xhr = new XMLHttpRequest();
+            let form = document.forms[0];
+            xhr.open(form.method, form.action, true);
+            var crim = document.getElementById("crim").value;
+            var zn = document.getElementById("zn").value;
+            var indus = document.getElementById("indus").value;
+            var nox = document.getElementById("nox").value;
+            var rm = document.getElementById("rm").value;
+            var age = document.getElementById("age").value;
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            var j = {
+                "crim": crim,
+                "zn": zn,
+                "indus": indus,
+                "chas": 0.0,
+                "nox": nox,
+                "rm": rm,
+                "age": age,
+                "dis": 3.9769,
+                "rad": 4.0,
+                "tax": 307,
+                "ptratio": 21.0,
+                "b": 396.9,
+                "lstat": 18.72
+            };
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    var resp = JSON.parse(xhr.responseText);
+                    alert("Predicted house price is: $" + (resp.price * 1000));
+                }
+            }
+            xhr.send(JSON.stringify(j));
+        }
+    </script>
+</body>
+
+</html>
