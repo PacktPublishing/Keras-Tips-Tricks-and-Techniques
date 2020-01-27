@@ -1,8 +1,8 @@
-# Keras-Tips-Tricks-and-Techniques
-Improve your deep-learning skills with Keras tips, tricks, and techniques	
+# Keras Tips, Tricks, and Techniques
+Improve your deep learning skills with Keras tips, tricks, and techniques	
 
 
-This is the code repository for [Keras Tips, Tricks and Techniques[Video]], published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the video course from start to finish.
+This is the code repository for [Keras Tips, Tricks and Techniques[Video]](https://www.packtpub.com/data/keras-tips-tricks-and-techniques-video), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the video course from start to finish.
 
 ## About the Video Course
 Machine learning and deep learning allow us to interpret data structures and fit that data into models to identify patterns and make predictions. Keras makes this easier with its huge set of libraries that can be easily used for machine learning.
